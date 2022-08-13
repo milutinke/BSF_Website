@@ -1,470 +1,437 @@
 <!DOCTYPE html>
-<html>
+<html lang="sr">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-        @font-face {
-            font-family: 'Lato';
-            src: url('Lato.ttf') format('truetype')
-        }
-
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            font: 400 20px/1.8 "Lato", sans-serif;
-            color: #777;
-        }
-
-        *,
-        *:before,
-        *:after {
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .background-image-1,
-        .background-image-2,
-        .background-image-3,
-        .background-image-4 {
-            position: relative;
-            opacity: 0.65;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .background-image-1 {
-            background-image: url("1.png");
-            min-height: 100%;
-        }
-
-        .background-image-2 {
-            background-image: url("2.jpg");
-            min-height: 400px;
-        }
-
-        .background-image-3 {
-            background-image: url("3.jpg");
-            min-height: 400px;
-        }
-
-        .background-image-4 {
-            background-image: url("4.jpg");
-            min-height: 105%;
-        }
-
-        .caption {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 100%;
-            text-align: center;
-            color: #000;
-        }
-
-        .caption span.border {
-            background-color: #111;
-            color: #fff;
-            padding: 18px;
-            font-size: 25px;
-            letter-spacing: 10px;
-        }
-
-        .caption span.border a,
-        .caption span.border a:visited {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .caption span.border a:hover {
-            color: #fff;
-            font-size: 28px;
-        }
-
-        h3 {
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font: 20px "Lato", sans-serif;
-            color: #111;
-        }
-
-        @media only screen and (max-device-width: 1024px) {
-
-            .background-image-1,
-            .background-image-2,
-            .background-image-3 {
-                background-attachment: scroll;
-            }
-        }
-
-        .mouse-scroll {
-            display: block;
-            margin: 0 auto;
-            width: 24px;
-            height: 100px;
-            margin-top: 125px;
-        }
-
-
-        .mouse-scroll-arrows {
-            display: block;
-            width: 5px;
-            height: 5px;
-            -ms-transform: rotate(45deg);
-            /* IE 9 */
-            -webkit-transform: rotate(45deg);
-            /* Chrome, Safari, Opera */
-            transform: rotate(45deg);
-
-            border-right: 2px solid white;
-            border-bottom: 2px solid white;
-            margin: 0 0 3px 4px;
-
-            width: 16px;
-            height: 16px;
-        }
-
-
-        .one {
-            margin-top: 1px;
-        }
-
-        .one,
-        .two,
-        .three {
-            -webkit-animation: mouse-scroll 1s infinite;
-            -moz-animation: mouse-scroll 1s infinite;
-            animation: mouse-scroll 1s infinite;
-        }
-
-        .one {
-            -webkit-animation-delay: .1s;
-            -moz-animation-delay: .1s;
-            -webkit-animation-direction: alternate;
-            animation-direction: alternate;
-            animation-delay: alternate;
-        }
-
-        .two {
-            -webkit-animation-delay: .2s;
-            -moz-animation-delay: .2s;
-            -webkit-animation-direction: alternate;
-            animation-delay: .2s;
-            animation-direction: alternate;
-            margin-top: -6px;
-        }
-
-        .three {
-            -webkit-animation-delay: .3s;
-            -moz-animation-delay: .3s;
-            -webkit-animation-direction: alternate;
-            animation-delay: .3s;
-            animation-direction: alternate;
-            margin-top: -6px;
-        }
-
-        .mouse {
-            height: 42px;
-            width: 24px;
-            border-radius: 14px;
-            transform: none;
-            border: 2px solid white;
-            top: 170px;
-        }
-
-        .wheel {
-            height: 5px;
-            width: 2px;
-            display: block;
-            margin: 5px auto;
-            background: white;
-            position: relative;
-
-            height: 4px;
-            width: 4px;
-            border: 2px solid #fff;
-            -webkit-border-radius: 8px;
-            border-radius: 8px;
-        }
-
-        .wheel {
-            -webkit-animation: mouse-wheel 0.6s linear infinite;
-            -moz-animation: mouse-wheel 0.6s linear infinite;
-            animation: mouse-wheel 0.6s linear infinite;
-        }
-
-        @-webkit-keyframes mouse-wheel {
-            0% {
-                opacity: 1;
-                -webkit-transform: translateY(0);
-                -ms-transform: translateY(0);
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                -webkit-transform: translateY(6px);
-                -ms-transform: translateY(6px);
-                transform: translateY(6px);
-            }
-        }
-
-        @-moz-keyframes mouse-wheel {
-            0% {
-                top: 1px;
-            }
-
-            25% {
-                top: 2px;
-            }
-
-            50% {
-                top: 3px;
-            }
-
-            75% {
-                top: 2px;
-            }
-
-            100% {
-                top: 1px;
-            }
-        }
-
-        @-o-keyframes mouse-wheel {
-
-            0% {
-                top: 1px;
-            }
-
-            25% {
-                top: 2px;
-            }
-
-            50% {
-                top: 3px;
-            }
-
-            75% {
-                top: 2px;
-            }
-
-            100% {
-                top: 1px;
-            }
-        }
-
-        @keyframes mouse-wheel {
-
-            0% {
-                top: 1px;
-            }
-
-            25% {
-                top: 2px;
-            }
-
-            50% {
-                top: 3px;
-            }
-
-            75% {
-                top: 2px;
-            }
-
-            100% {
-                top: 1px;
-            }
-        }
-
-        @-webkit-keyframes mouse-scroll {
-
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: .5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @-moz-keyframes mouse-scroll {
-
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: .5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @-o-keyframes mouse-scroll {
-
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: .5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes mouse-scroll {
-
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: .5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style>
+		.background-image-1,
+		.background-image-2,
+		.background-image-3,
+		.background-image-4 {
+			position: relative;
+			opacity: 0.75;
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.background-image-1 {
+			background-image: url('1.png');
+			min-height: 100%;
+		}
+
+		.background-image-2 {
+			background-image: url('2.png');
+			min-height: 400px;
+		}
+
+		.background-image-3 {
+			background-image: url('3.png');
+			min-height: 400px;
+		}
+
+		.background-image-4 {
+			background-image: url('4.png');
+			min-height: 105%;
+		}
+
+		.caption {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			text-align: center;
+			color: #000;
+		}
+
+		.caption span.border {
+			background-color: #111;
+			color: #fff;
+			padding: 18px;
+			font-size: 25px;
+			letter-spacing: 10px;
+		}
+
+		.caption span.border a,
+		.caption span.border a:visited {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.caption span.border a:hover {
+			color: #f1be02;
+		}
+
+		@media only screen and (max-device-width: 1024px) {
+			.background-image-1,
+			.background-image-2,
+			.background-image-3,
+			.background-image-4 {
+				background-attachment: scroll;
+			}
+		}
+
+		.mouse-scroll {
+			display: block;
+			margin: 0 auto;
+			width: 24px;
+			height: 100px;
+			margin-top: 125px;
+		}
+
+		.mouse-scroll-arrows {
+			display: block;
+			width: 5px;
+			height: 5px;
+			-ms-transform: rotate(45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(45deg);
+			/* Chrome, Safari, Opera */
+			transform: rotate(45deg);
+
+			border-right: 2px solid #f1be02;
+			border-bottom: 2px solid #f1be02;
+			margin: 0 0 3px 4px;
+
+			width: 16px;
+			height: 16px;
+		}
+
+		.one {
+			margin-top: 1px;
+		}
+
+		.one,
+		.two,
+		.three {
+			-webkit-animation: mouse-scroll 1s infinite;
+			-moz-animation: mouse-scroll 1s infinite;
+			animation: mouse-scroll 1s infinite;
+		}
+
+		.one {
+			-webkit-animation-delay: 0.1s;
+			-moz-animation-delay: 0.1s;
+			-webkit-animation-direction: alternate;
+			animation-direction: alternate;
+			animation-delay: alternate;
+		}
+
+		.two {
+			-webkit-animation-delay: 0.2s;
+			-moz-animation-delay: 0.2s;
+			-webkit-animation-direction: alternate;
+			animation-delay: 0.2s;
+			animation-direction: alternate;
+			margin-top: -6px;
+		}
+
+		.three {
+			-webkit-animation-delay: 0.3s;
+			-moz-animation-delay: 0.3s;
+			-webkit-animation-direction: alternate;
+			animation-delay: 0.3s;
+			animation-direction: alternate;
+			margin-top: -6px;
+		}
+
+		.mouse {
+			height: 42px;
+			width: 24px;
+			border-radius: 14px;
+			transform: none;
+			border: 2px solid #f1be02;
+			top: 170px;
+		}
+
+		.wheel {
+			height: 5px;
+			width: 2px;
+			display: block;
+			margin: 5px auto;
+			background: #f1be02;
+			position: relative;
+
+			height: 4px;
+			width: 4px;
+			border: 2px solid #f1be02;
+			-webkit-border-radius: 8px;
+			border-radius: 8px;
+		}
+
+		.wheel {
+			-webkit-animation: mouse-wheel 0.6s linear infinite;
+			-moz-animation: mouse-wheel 0.6s linear infinite;
+			animation: mouse-wheel 0.6s linear infinite;
+		}
+
+		@-webkit-keyframes mouse-wheel {
+			0% {
+				opacity: 1;
+				-webkit-transform: translateY(0);
+				-ms-transform: translateY(0);
+				transform: translateY(0);
+			}
+
+			100% {
+				opacity: 0;
+				-webkit-transform: translateY(6px);
+				-ms-transform: translateY(6px);
+				transform: translateY(6px);
+			}
+		}
+
+		@-moz-keyframes mouse-wheel {
+			0% {
+				top: 1px;
+			}
+
+			25% {
+				top: 2px;
+			}
+
+			50% {
+				top: 3px;
+			}
+
+			75% {
+				top: 2px;
+			}
+
+			100% {
+				top: 1px;
+			}
+		}
+
+		@-o-keyframes mouse-wheel {
+			0% {
+				top: 1px;
+			}
+
+			25% {
+				top: 2px;
+			}
+
+			50% {
+				top: 3px;
+			}
+
+			75% {
+				top: 2px;
+			}
+
+			100% {
+				top: 1px;
+			}
+		}
+
+		@keyframes mouse-wheel {
+			0% {
+				top: 1px;
+			}
+
+			25% {
+				top: 2px;
+			}
+
+			50% {
+				top: 3px;
+			}
+
+			75% {
+				top: 2px;
+			}
+
+			100% {
+				top: 1px;
+			}
+		}
+
+		@-webkit-keyframes mouse-scroll {
+			0% {
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 0.5;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@-moz-keyframes mouse-scroll {
+			0% {
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 0.5;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@-o-keyframes mouse-scroll {
+			0% {
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 0.5;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@keyframes mouse-scroll {
+			0% {
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 0.5;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+	</style>
+
+	<meta charset="UTF-8" />
 </head>
 
 <body>
+	<div class="background-image-1">
+		<div class="topnav">
+			<a class="nav-logo" href="index.html">Balkans Special Forces</a>
+			<a class="nav-logo-mobile" href="index.html">BSF</a>
+			<div class="topnav-right">
+				<a href="#about">O nama</a>
+				<a href="#discord">Discord</a>
+				<a href="#donate">Donacije</a>
+			</div>
+		</div>
 
-    <div class="background-image-1">
-        <div class="caption">
-            <span class="border">Balkans Special Forces Gaming</span>
-            <div class="mouse-scroll">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <div>
-                    <span class="mouse-scroll-arrows one"></span>
-                    <span class="mouse-scroll-arrows two"></span>
-                    <span class="mouse-scroll-arrows three"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="caption" style="opacity: 0.80 !important">
+			<span class="border"><span style="color: #f1be02 !important">[BSF] Balkans Special Forces</span></span>
+			<div class="mouse-scroll">
+				<div class="mouse">
+					<div class="wheel"></div>
+				</div>
+				<div>
+					<span class="mouse-scroll-arrows one"></span>
+					<span class="mouse-scroll-arrows two"></span>
+					<span class="mouse-scroll-arrows three"></span>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div id="main" style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-        <h3 style="text-align:center;">General information about the community</h3>
-        <h2>Who are we?</h2>
-        <p>Balkans Special Forces (BSF) is a gaming community dedicated to gaming in an SFW environment, making new
-            friendships, and relaxed play.</p>
-        <p>We all have our own lives and real-life responsibilities, so, we are a relaxed type of a community, you play
-            when you are in the mood and when you have time, no one is going to force you to keep with some sort of
-            schedule.</p>
+	<div id="about"
+		style="color: #777; background-color: white; text-align: center; padding: 50px 80px; text-align: left">
+		<h3 style="text-align: center">Opšte informacije</h3>
+		<h2>Ko smo mi?</h2>
+		<p>Balkans Special Forces (BSF) je gejming zajednica posvećena opuštenoj igri u bezbednom i opuštenom okruženju
+			bez drama.</p>
+		<p>
+			Svi mi imamo naše živote i obaveze, mi smo zajednica koja ima za cilj da okupi ljude koji žele da steknu
+			nova prijateljstva i da igraju u
+			opuštenoj sredini. Igrate kada možete, niko vas neće obavezivati/forsirati da igrate po nekakvom rasporedu.
+		</p>
 
-        <h2>What games do we play?</h2>
-        <p>Currently, we are centered around the game called Squad from Offworld Industries.
-            But, we also play Escape From Tarkov and ARMA III.</p>
-        <p>We are looking to expand to other games once we have gathered a sufficient number of members and completed
-            the
-            formation of the International Clan.</p>
+		<h2>Koje igre igramo?</h2>
+		<p>Trenutno nam je glavna igra Arma III, ali takođe igramo: Squad i Escape From Tarkov</p>
+		<p>Squad nam je bila glavna igra, sada je to Arma III. U budućnosti planiramo da uvedemo i Operation: Harsh
+			Doorstop kada izadje iz beta faze.</p>
 
-        <h2>Is this community Balkans exclusive?</h2>
-        <p>No, do not let the name fool you, we may have a lot of people from the Balkans, but we are international.
-            We have started on the Balkans, but we have a lot of international members from all over the world.</p>
+		<h2>Da li je ovo zajednica samo za Balkance?</h2>
+		<p>Arma deo jeste, dok je Squad i Escape From Tarkov deo internacionalni.</p>
 
-        <h2>Do we have any servers?</h2>
-        <p>Yes, we do, we currently host 2 Squad servers, one is a public vanilla server and the other one is for
-            training/events.</p>
+		<h2>Da li imamo neki server?</h2>
+		<p>
+			Da, imamo Arma III server koji koristimo za misije i za obuku novih članova. Takođe imamo 2 diskord servera,
+			jedan je za internacionalni deo,
+			dok je jedan striktno posvećen Armi, kao i Team Speak server koji koristimo za operacije.
+		</p>
 
-        <h2>How I can join in?</h2>
-        <p>Scroll to the bottom of the page and click on the <strong>,,JOIN US"</strong> button</p>
-    </div>
+		<h2>Kako mogu da se pridužim?</h2>
+		<p>Skroluj na dno stranice i klikni <strong>,,PRIDRUŽI NAM SE"</strong> dugme</p>
+		<p><em>PS: Link je do internacionalnog diskorda, tamo pitajte za link za Arma III diskord.</em></p>
+	</div>
 
-    <div class="background-image-2">
-        <div class="caption">
-            <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">UNITY, TEAMWORK,
-                FUN</span>
-        </div>
-    </div>
+	<div class="background-image-2">
+		<div class="caption">
+			<span class="border" style="background-color: transparent; font-size: 25px; color: #f7f7f7">JEDINSTVO,
+				TIMSKI RAD, ZABAVA!</span>
+		</div>
+	</div>
 
-    <div style="position:relative;">
-        <div style="color:#fff;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-            <h3 style="text-align:center;color:#fff;">Information related to Clan(s) and the Battalion</h3>
-            <h2>Clans?</h2>
-            <p>Yes, it is plural, Clans, we currently have 2 clans.
-                The original one, <strong>Balkans exclusive clan</strong> (<em>by Balkans we mean Ex. Yugoslav
-                    states</em>) and the <strong>International</strong>
-                clan.</p>
+	<div style="position: relative">
+		<div id="donate"
+			style="color: #fff; background-color: #282e34; text-align: center; padding: 50px 80px; text-align: left">
+			<h3 style="text-align: center; color: #fff">Ostale informacije</h3>
+			<h2>Donacije</h2>
+			<p>Da bi smo držali Arma III server i Team Speak server potrebne su nam donacije.</p>
+			<p>Sav novac od donacija se isključivo koristi za plaćanje servera.</p>
+			<p>Donacije nisu obavezne, one su na dobrovoljnoj bazi.</p>
+			<p>Sav novac koji se ne potroši, prenosi se za sledeći mesec.</p>
 
-            <h2>Balkans exclusive clan</h2>
-            <p>The members of this clan are only people from ex. Yugoslav states, but if you know our language on a
-                sufficient level, you can join in.
-                This is the original clan that has been formed last year, currently, we count over 160 people, but we
-                are growing day by day.
-                The clan tag is BSF.</p>
+			<h2>Kako da doniram?</h2>
+			<p>
+				Imamo nekoliko načina za primanje donacija, a to su:
+			<ul class="dashed">
+				<li><a href="donate.html">PayPal (Klikni ovde da doniraš)</a></li>
+				<li>Kreditna Kartica (Paysend) (Javiti se <span style="color: #f1be02;">milutinke#6897</span> na
+					Diskordu za više informacija)</li>
+				<li><a href="https://etherscan.io/address/0xa8121Ee49A83f0541ca71D4B4cbEa3a0AEE70f7d">Ethereum (ETH)</a>
+				</li>
+			</ul>
+			</p>
 
-            <h2>International Clan</h2>
-            <p>Despite us being from the Balkans, we also have an international version of the clan with the tag
-                <strong>BSF-I</strong>.
-                By default, the members of the original BSF clan are also members of the <strong>International</strong>
-                (<strong>BSF-I</strong>) clan,
-                but, without them, currently, this clan counts about 20++ members.
-                We are looking to expand and get more international members for this clan.
-            </p>
+			<h2>Napomene:</h2>
+			<p>Novac ne vraćamo, jer se radi o donacijama.</p>
+			<p>Donacije ne mogu da kupe višu poziciju/status u klanu.</p>
+			<p>Ako ste donirali, ali ste prekršili pravila zajednice, to Vas neće izuzeti od kazne.</p>
+		</div>
+	</div>
 
-            <h2>Batallion</h2>
-            <p>Currently, the original BSF clan has formed up a Battalion that will represent the community/clan on the
-                competitive scene.
-                The Battalion is currently in process of training members.</p>
-        </div>
-    </div>
+	<div id="discord" class="background-image-4">
+		<div class="caption">
+			<span class="border"><a href="http://discord.link/bsf">PRIDRUŽI NAM SE</a></span>
+		</div>
+	</div>
 
-    <div class="background-image-3">
-        <div class="caption">
-            <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">MORE INFO</span>
-        </div>
-    </div>
+	<div style="position: relative">
+		<div style="color: #ddd; background-color: #282e34; text-align: center; padding: 5px 80px; text-align: left">
+			<p>Napravio i dizajnirao milutinke#6897</p>
+		</div>
+	</div>
 
-    <div style="position:relative;">
-        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-            <p>This website has minimum of information about the community, clans and servers, for detailed and all
-                other information join us on our discord using the button down bellow.</p>
-        </div>
-    </div>
-
-    <div class="background-image-4">
-        <div class="caption">
-            <span class="border"><a href="http://discord.link/bsf">JOIN US NOW!</a></span>
-        </div>
-    </div>
-
-    <div style="position:relative;">
-        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:5px 80px;text-align: justify;">
-            <p>Created and designed by Dusan Milutinovic.</p>
-        </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".mouse-scroll").on('click', function (event) {
-                $('html, body').animate({
-                    scrollTop: $("#main").offset().top
-                }, 800, function () {
-                    window.location.hash = "#main";
-                });
-            });
-        });
-    </script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.mouse-scroll').on('click', function (event) {
+				$('html, body').animate(
+					{
+						scrollTop: $('#about').offset().top,
+					},
+					800,
+					function () {
+						window.location.hash = '#about';
+					}
+				);
+			});
+		});
+	</script>
 </body>
 
 </html>
